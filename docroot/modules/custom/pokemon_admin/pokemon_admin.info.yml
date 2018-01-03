@@ -1,0 +1,6 @@
+name: Pokemon website configuration
+description: Configuration area for Pokemon Website
+package: Pokemon
+
+type: module
+core: 8.x

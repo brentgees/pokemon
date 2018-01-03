@@ -1,0 +1,9 @@
+# main route to wrap all custom configuration pages
+pokemon_admin.main_page:
+  path: '/admin/pokemon'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Pokemon website configuration'
+    _parent: 'system.admin'
+  options:
+    _admin_route: TRUE

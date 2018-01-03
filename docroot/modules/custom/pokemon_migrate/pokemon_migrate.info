@@ -1,0 +1,5 @@
+name: Pokemon migrate
+type: module
+description: Pokemon migrate module
+core: 8.x
+package: Pokemon

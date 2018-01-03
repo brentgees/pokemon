@@ -1,0 +1,6 @@
+# Pokemon header defaults menu items definition
+pokemon_admin.main_page:
+  title: 'Pokemon'
+  route_name: pokemon_admin.main_page
+  description: 'Configure Header defaults.'
+  parent: system.admin
