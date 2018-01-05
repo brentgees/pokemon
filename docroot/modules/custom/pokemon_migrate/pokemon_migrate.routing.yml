@@ -1,0 +1,7 @@
+pokemon_migrate.batch:
+  path: 'admin/pokemon/migrate/batch'
+  defaults:
+    _controller: '\Drupal\pokemon_migrate\Controller\PokemonMigrateBatchController::content'
+    _title: 'Batch pokemon migrate'
+  requirements:
+    _permission: 'administer content'

@@ -7,3 +7,5 @@ pokemon_admin.main_page:
     _parent: 'system.admin'
   options:
     _admin_route: TRUE
+  requirements:
+    _permission: 'administer content'
