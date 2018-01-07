@@ -5,13 +5,33 @@
  * Contains the imports
  */
 
-/**
- * Migrate the sets
- */
-function migrate_sets(&$context) {
+use Drupal\taxonomy\Entity\Term;
+use Pokemon\Pokemon;
 
+/**
+ * Migrate the set.
+ */
+function pokemon_migrate_sets($sets = array(), &$context) {
   // Do heavy coding here...
-  $message = 'migrating';
+
+  foreach ($sets as $set) {
+
+    $context['results'][] = 'Imported' . $set->getName();
+    $context['message'] = 'Importing ' . $set->getName();
+    $term = Term::create([
+      'name' => $set->getName(),
+      'vid' => 'set',
+      'field_set_code' => $set->getCode(),
+      'field_set_expanded_legal' => $set->isExpandedLegal(),
+//      'field_set_logo' => $set->getLogoUrl(),
+      'field_set_ptcgo_code' => $set->getPtcgoCode(),
+//      'field_set_release_date' => $set->getReleaseDate(),
+      'field_set_series' => $set->getSeries(),
+      'field_set_standard_legal' => $set->isStandardLegal(),
+//      'field_set_symbol' => $set->getSymbolUrl(),
+      'field_set_total_cards' => $set->getTotalCards(),
+    ])->save();;
+  }
 
 //  switch ($type) {
 //    case 'courses':
@@ -23,9 +43,7 @@ function migrate_sets(&$context) {
 //      break;
 //  }
 
-  $context['results'][] = 'test';
 
-  $context['message'] = $message;
 }
 
 function pokemon_migrate_finished_callback($success, $results, $operations) {
