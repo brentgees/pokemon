@@ -20,6 +20,12 @@ class PokemonMigrateBatchController {
    * Perform batch.
    */
   public function content() {
+
+//    $result = \Drupal::entityQuery('taxonomy_term')
+//      ->condition('vid', 'set')
+//      ->execute();
+//    entity_delete_multiple('taxonomy_term', $result);
+
     // Get previously imported nodes.
     $query = \Drupal::database()->select('pokemon_migrate', 'pm');
     $query->fields('pm');
