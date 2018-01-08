@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Creates a database.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function pokemon_migrate_schema() {
+  $schema['pokemon_migrate'] = [
+    'description' => 'Remembers the keys for the migrate',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Unique id',
+      ],
+      'drupal_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Unique id in Drupal',
+      ],
+      'entity_type' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The entity type to which this row belongs',
+      ],
+      'bundle' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The field instance bundle to which this row belongs, used when deleting a field instance',
+      ],
+      'ptcgapi_id' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => "The ID in the ptcg api.",
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+
+  return $schema;
+}
