@@ -6,6 +6,7 @@
  */
 
 use Drupal\file\Entity\File;
+use Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use Pokemon\Pokemon;
 
@@ -22,7 +23,7 @@ function pokemon_migrate_sets($sets = [], $existing_nodes = [], &$context) {
     else {
 
       // Create directory.
-      $directory = file_stream_wrapper_uri_normalize( "public://cards/" . $set->getCode());
+      $directory = file_stream_wrapper_uri_normalize("public://cards/" . $set->getCode());
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
       // Logo.
@@ -91,6 +92,35 @@ function pokemon_migrate_sets($sets = [], $existing_nodes = [], &$context) {
 
 }
 
+/**
+ * Migrate the cards.
+ */
+function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
+  foreach ($cards as $card) {
+    $node = Node::create([
+      'type' => 'card',
+      'title' => $card->getName(),
+      'field_card_artist' => '',
+      'field_card_hp' => '',
+      'field_card_id' => '',
+      'field_card_image' => '',
+      'field_card_national_pokedex_numb' => '',
+      'field_card_number' => '',
+      'field_card_rarity' => '',
+      'field_card_retreat_cost' => '',
+      'field_card_series' => '',
+      'field_card_set' => '',
+      'field_card_subtype' => '',
+      'field_card_supertype' => '',
+      'field_card_types' => '',
+    ]);
+    $node->save();
+  }
+}
+
+/**
+ * Finish callback.
+ */
 function pokemon_migrate_finished_callback($success, $results, $operations) {
   // The 'success' parameter means no fatal PHP errors were detected. All
   // other error management should be handled using 'results'.

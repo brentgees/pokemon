@@ -5,3 +5,11 @@ pokemon_migrate.batch:
     _title: 'Batch pokemon migrate'
   requirements:
     _permission: 'administer content'
+
+pokemon_migrate.batch_cards:
+  path: 'admin/pokemon/migrate/batch_cards'
+  defaults:
+    _controller: '\Drupal\pokemon_migrate\Controller\PokemonMigrateBatchController::migrateCards'
+    _title: 'Batch pokemon migrate cards'
+  requirements:
+    _permission: 'administer content'

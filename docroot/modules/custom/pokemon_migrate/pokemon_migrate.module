@@ -10,3 +10,12 @@
 
 // https://github.com/PokemonTCG/pokemon-tcg-sdk-php
 // http://tylerfrankenstein.com/code/drupal-8-batch-example
+
+/**
+ * Checks if a term already exists.
+ *
+ * If it exisist, return tid, if not, create and return tid.
+ */
+function pokemon_migrate_create_or_select_term($term_name, $vid) {
+
+}
