@@ -44,6 +44,13 @@ function pokemon_migrate_schema() {
         'default' => 0,
         'description' => "The ID in the ptcg api.",
       ],
+      'updated' => [
+        'description' => "The creation date of this record",
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ],
     ],
     'primary key' => ['id'],
   ];

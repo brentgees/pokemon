@@ -21,10 +21,11 @@ class PokemonMigrateBatchController {
    */
   public function content() {
 
-//    $result = \Drupal::entityQuery('taxonomy_term')
-//      ->condition('vid', 'set')
-//      ->execute();
-//    entity_delete_multiple('taxonomy_term', $result);
+    // Delete terms.
+    $result = \Drupal::entityQuery('taxonomy_term')
+      ->condition('vid', 'set')
+      ->execute();
+    entity_delete_multiple('taxonomy_term', $result);
 
     // Get previously imported nodes.
     $query = \Drupal::database()->select('pokemon_migrate', 'pm');
@@ -49,10 +50,10 @@ class PokemonMigrateBatchController {
   }
 
   /**
-   * Migrates the cards
+   * Migrates the cards.
    */
   public function migrateCards() {
-    // Delete nodes
+    // Delete nodes.
     $result = \Drupal::entityQuery('node')
       ->condition('type', 'card')
       ->execute();
@@ -65,7 +66,7 @@ class PokemonMigrateBatchController {
     $query->condition('bundle', 'card');
     $result = $query->execute()->fetchAllAssoc('ptcgapi_id');
 
-    $cards = Pokemon::Card()->where(['setCode' => 'xy7'])->all();
+    $cards = Pokemon::Card()->where(['setCode' => 'sm2', 'pageSize' => '1000'])->all();
 
     $batch = array(
       'title' => t('Exporting'),

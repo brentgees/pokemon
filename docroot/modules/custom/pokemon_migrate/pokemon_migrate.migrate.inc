@@ -12,6 +12,9 @@ use Pokemon\Pokemon;
 
 /**
  * Migrate the set.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Exception
  */
 function pokemon_migrate_sets($sets = [], $existing_nodes = [], &$context) {
   // Do heavy coding here...
@@ -56,7 +59,9 @@ function pokemon_migrate_sets($sets = [], $existing_nodes = [], &$context) {
         ],
         'field_set_ptcgo_code' => $set->getPtcgoCode(),
         'field_set_release_date' => $release_date,
-        'field_set_series' => $set->getSeries(), //@TODO.
+        'field_set_series' => [
+          'target_id' => pokemon_migrate_create_or_select_term($set->getSeries(), 'series'),
+        ],
         'field_set_standard_legal' => $set->isStandardLegal(),
         'field_set_symbol' => [
           'target_id' => $symbol_file->id(),
@@ -67,25 +72,23 @@ function pokemon_migrate_sets($sets = [], $existing_nodes = [], &$context) {
       ]);
       $term->save();
 
-      try {
-        \Drupal::database()->insert('pokemon_migrate')
-          ->fields([
-            'drupal_id',
-            'entity_type',
-            'bundle',
-            'ptcgapi_id',
-          ])
-          ->values([
-            $term->id(),
-            'taxonomy',
-            'set',
-            $set->getCode(),
-          ])
-          ->execute();
-      } catch (Exception $e) {
+      \Drupal::database()->insert('pokemon_migrate')
+        ->fields([
+          'drupal_id',
+          'entity_type',
+          'bundle',
+          'ptcgapi_id',
+          'updated',
+        ])
+        ->values([
+          $term->id(),
+          'taxonomy',
+          'set',
+          $set->getCode(),
+          time(),
+        ])
+        ->execute();
 
-        $tmp = '';
-      }
     }
 
   }
@@ -94,27 +97,87 @@ function pokemon_migrate_sets($sets = [], $existing_nodes = [], &$context) {
 
 /**
  * Migrate the cards.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+ * @throws \Exception
  */
 function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
   foreach ($cards as $card) {
-    $node = Node::create([
-      'type' => 'card',
-      'title' => $card->getName(),
-      'field_card_artist' => '',
-      'field_card_hp' => '',
-      'field_card_id' => '',
-      'field_card_image' => '',
-      'field_card_national_pokedex_numb' => '',
-      'field_card_number' => '',
-      'field_card_rarity' => '',
-      'field_card_retreat_cost' => '',
-      'field_card_series' => '',
-      'field_card_set' => '',
-      'field_card_subtype' => '',
-      'field_card_supertype' => '',
-      'field_card_types' => '',
-    ]);
-    $node->save();
+    if (isset($existing_nodes[$card->getId()]->drupal_id)) {
+      // Do stuff when the node already exists, update and stuff.
+    }
+    else {
+      $context['results'][] = 'Imported' . $card->getName();
+      $context['message'] = 'Importing ' . $card->getName();
+
+      // Create directory.
+      $directory = file_stream_wrapper_uri_normalize("public://cards/" . $card->getSetCode());
+      file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
+
+      // Image.
+      $image = file_get_contents($card->getImageUrlHiRes());
+      $size = getimagesize($card->getImageUrlHiRes());
+      $extension = image_type_to_extension($size[2]);
+      $image_file = file_save_data($image, 'public://cards/' . $card->getSetCode() . '/' . $card->getNumber() . $extension, FILE_EXISTS_REPLACE);
+
+      // Types.
+      $field_card_types = [];
+      foreach ($card->getTypes() as $type) {
+        $field_card_types[]['target_id'] = pokemon_migrate_create_or_select_term($type, 'types');
+      }
+      $node = Node::create([
+        'type' => 'card',
+        'title' => $card->getName(),
+        'field_card_artist' => [
+          'target_id' => pokemon_migrate_create_or_select_term($card->getArtist(), 'artist'),
+        ],
+        'field_card_hp' => $card->getHp(),
+        'field_card_id' => $card->getId(),
+        'field_card_image' => [
+          'target_id' => $image_file->id(),
+          'alt' => $card->getName(),
+          'title' => $card->getName(),
+        ],
+        'field_card_national_pokedex_numb' => $card->getNationalPokedexNumber(),
+        'field_card_number' => $card->getNumber(),
+        'field_card_rarity' => [
+          'target_id' => pokemon_migrate_create_or_select_term($card->getRarity(), 'rarity'),
+        ],
+        'field_card_retreat_cost' => $card->getRetreatCost(),
+        'field_card_series' => [
+          'target_id' => pokemon_migrate_create_or_select_term($card->getSeries(), 'series'),
+        ],
+        'field_card_set' => [
+          'target_id' => pokemon_migrate_create_or_select_term($card->getSet(), 'set'),
+        ],
+        'field_card_subtype' => [
+          'target_id' => pokemon_migrate_create_or_select_term($card->getSubtype(), 'subtype'),
+        ],
+        'field_card_supertype' => [
+          'target_id' => pokemon_migrate_create_or_select_term($card->getSupertype(), 'supertype'),
+        ],
+        'field_card_types' => $field_card_types,
+      ]);
+
+      $node->save();
+
+      \Drupal::database()->insert('pokemon_migrate')
+        ->fields([
+          'drupal_id',
+          'entity_type',
+          'bundle',
+          'ptcgapi_id',
+          'updated',
+        ])
+        ->values([
+          $node->id(),
+          'node',
+          'card',
+          $node->getId(),
+          time(),
+        ])
+        ->execute();
+    }
   }
 }
 

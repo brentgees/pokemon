@@ -6,16 +6,32 @@
  */
 
 
-
-
 // https://github.com/PokemonTCG/pokemon-tcg-sdk-php
 // http://tylerfrankenstein.com/code/drupal-8-batch-example
+use Drupal\taxonomy\Entity\Term;
 
 /**
  * Checks if a term already exists.
  *
  * If it exisist, return tid, if not, create and return tid.
+ *
+ * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
  */
 function pokemon_migrate_create_or_select_term($term_name, $vid) {
+  $term = Drupal::entityTypeManager()
+    ->getStorage('taxonomy_term')
+    ->loadByProperties(['name' => $term_name, 'vid' => $vid]);
 
+  if (!empty($term)) {
+    reset($term);
+    return key($term);
+  }
+  else {
+    $term = Term::create([
+      'name' => $term_name,
+      'vid' => $vid,
+    ]);
+    $term->save();
+    return $term->id();
+  }
 }
