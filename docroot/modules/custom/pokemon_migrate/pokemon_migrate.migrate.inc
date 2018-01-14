@@ -149,9 +149,16 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
         }
         $field_card_attacks[]['target_id'] = $attack_id;
       }
+
+      // Card set.
+      $card_set_id = pokemon_migrate_create_or_select_term($card->getSet(), 'set');
+      $card_set = Term::load($card_set_id);
+      $card_set_value = $card_set->get('field_set_ptcgo_code')->getValue();
+
       $node = Node::create([
         'type' => 'card',
-        'title' => $card->getName(),
+        'title' => $card->getName() . ' ' . $card_set_value[0]['value'] . ' ' . $card->getNumber(),
+        'field_card_name' => $card->getName(),
         'field_card_artist' => [
           'target_id' => pokemon_migrate_create_or_select_term($card->getArtist(), 'artist'),
         ],
@@ -172,7 +179,7 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
           'target_id' => pokemon_migrate_create_or_select_term($card->getSeries(), 'series'),
         ],
         'field_card_set' => [
-          'target_id' => pokemon_migrate_create_or_select_term($card->getSet(), 'set'),
+          'target_id' => $card_set_id,
         ],
         'field_card_subtype' => [
           'target_id' => pokemon_migrate_create_or_select_term($card->getSubtype(), 'subtype'),

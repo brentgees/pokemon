@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.card.field_card_hp
     - field.field.node.card.field_card_id
     - field.field.node.card.field_card_image
+    - field.field.node.card.field_card_name
     - field.field.node.card.field_card_national_pokedex_numb
     - field.field.node.card.field_card_number
     - field.field.node.card.field_card_rarity
@@ -75,6 +76,14 @@ content:
       preview_image_style: thumbnail
     third_party_settings: {  }
     type: image_image
+    region: content
+  field_card_name:
+    weight: 135
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_card_national_pokedex_numb:
     weight: 122
