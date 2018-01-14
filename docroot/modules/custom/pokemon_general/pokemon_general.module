@@ -47,9 +47,13 @@ function pokemon_general_check_if_attack_exists(Attack $attack) {
   if (!empty($result)) {
     $attacks = AttackEntity::loadMultiple($result);
     foreach ($attacks as $attack_node) {
-      $attack_text_same = $attack->getText() == $attack_node->get('field_attack_text')->getValue() ? TRUE : FALSE;
-      $attack_damage_same = $attack->getDamage() == $attack_node->get('field_attack_damage')->getValue() ? TRUE : FALSE;
-      $attack_converted_ec_same = $attack->getConvertedEnergyCost() == $attack_node->get('field_attack_converted_ec')->getValue() ? TRUE : FALSE;
+      $field_attack_text = $attack_node->get('field_attack_text')->getValue();
+      $field_attack_damge = $attack_node->get('field_attack_damage')->getValue();
+      $field_attack_converted_ec = $attack_node->get('field_attack_converted_ec')->getValue();
+
+      $attack_text_same = $attack->getText() == $field_attack_text[0]['value'] ? TRUE : FALSE;
+      $attack_damage_same = $attack->getDamage() == $field_attack_damge[0]['value'] ? TRUE : FALSE;
+      $attack_converted_ec_same = $attack->getConvertedEnergyCost() == $field_attack_converted_ec[0]['value'] ? TRUE : FALSE;
       // We assume the cost is the same for now.
       // $attack_cost_same = TRUE;
       // foreach ($attack_node->get('field_attack_cost')->getValue() as $attack_cost) {

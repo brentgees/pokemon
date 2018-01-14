@@ -796,3 +796,6 @@ $databases['default']['default'] = array (
 );
 $settings['install_profile'] = 'thunder';
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
+
+ini_set('memory_limit', -1);
+ini_set('max_execution_time', -1);
