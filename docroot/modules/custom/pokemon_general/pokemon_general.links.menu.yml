@@ -1,0 +1,14 @@
+
+# Attack entity menu items definition
+entity.attack_entity.collection:
+  title: 'Attack entity list'
+  route_name: entity.attack_entity.collection
+  description: 'List Attack entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+attack_entity.admin.structure.settings:
+  title: Attack entity settings
+  description: 'Configure Attack entity entities'
+  route_name: attack_entity.settings
+  parent: system.admin_structure

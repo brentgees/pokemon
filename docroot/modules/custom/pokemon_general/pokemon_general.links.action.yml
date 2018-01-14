@@ -1,0 +1,5 @@
+entity.attack_entity.add_form:
+  route_name: entity.attack_entity.add_form
+  title: 'Add Attack entity'
+  appears_on:
+    - entity.attack_entity.collection

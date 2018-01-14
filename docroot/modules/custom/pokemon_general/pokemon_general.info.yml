@@ -1,0 +1,5 @@
+name: pokemon_general
+type: module
+description: General module for pokemon
+core: 8.x
+package: Pokemon

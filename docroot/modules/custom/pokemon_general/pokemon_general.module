@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains pokemon_general.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function pokemon_general_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the pokemon_general module.
+    case 'help.page.pokemon_general':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('General module for pokemon') . '</p>';
+      return $output;
+
+    default:
+  }
+}

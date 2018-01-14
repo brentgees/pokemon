@@ -1,0 +1,22 @@
+add attack entity entities:
+  title: 'Create new Attack entity entities'
+
+administer attack entity entities:
+  title: 'Administer Attack entity entities'
+  description: 'Allow to access the administration form to configure Attack entity entities.'
+  restrict access: true
+
+delete attack entity entities:
+  title: 'Delete Attack entity entities'
+
+edit attack entity entities:
+  title: 'Edit Attack entity entities'
+
+access attack entity overview:
+  title: 'Access the Attack entity overview page'
+
+view published attack entity entities:
+  title: 'View published Attack entity entities'
+
+view unpublished attack entity entities:
+  title: 'View unpublished Attack entity entities'
