@@ -1,0 +1,20 @@
+uuid: 9dca715d-0268-46c6-b22b-38dead2b9edd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - pokemon_general
+id: node.field_card_attack
+field_name: field_card_attack
+entity_type: node
+type: entity_reference
+settings:
+  target_type: attack_entity
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

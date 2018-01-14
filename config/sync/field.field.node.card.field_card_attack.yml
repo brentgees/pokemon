@@ -1,0 +1,25 @@
+uuid: 1f0926aa-fdc2-49f8-adfc-5725ec796e45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_attack
+    - node.type.card
+id: node.card.field_card_attack
+field_name: field_card_attack
+entity_type: node
+bundle: card
+label: Attack
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:attack_entity'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

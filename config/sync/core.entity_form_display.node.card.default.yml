@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.card.field_card_artist
+    - field.field.node.card.field_card_attack
     - field.field.node.card.field_card_hp
     - field.field.node.card.field_card_id
     - field.field.node.card.field_card_image
@@ -35,6 +36,15 @@ content:
     third_party_settings: {  }
   field_card_artist:
     weight: 130
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_card_attack:
+    weight: 134
     settings:
       match_operator: CONTAINS
       size: 60
