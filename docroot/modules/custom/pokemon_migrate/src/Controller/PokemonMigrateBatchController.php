@@ -22,10 +22,10 @@ class PokemonMigrateBatchController {
   public function content() {
 
     // Delete terms.
-    $result = \Drupal::entityQuery('taxonomy_term')
-      ->condition('vid', 'set')
-      ->execute();
-    entity_delete_multiple('taxonomy_term', $result);
+//    $result = \Drupal::entityQuery('taxonomy_term')
+//      ->condition('vid', 'set')
+//      ->execute();
+//    entity_delete_multiple('taxonomy_term', $result);
 
     // Get previously imported nodes.
     $query = \Drupal::database()->select('pokemon_migrate', 'pm');
@@ -54,10 +54,10 @@ class PokemonMigrateBatchController {
    */
   public function migrateCards() {
     // Delete nodes.
-    $result = \Drupal::entityQuery('node')
-      ->condition('type', 'card')
-      ->execute();
-    entity_delete_multiple('node', $result);
+//    $result = \Drupal::entityQuery('node')
+//      ->condition('type', 'card')
+//      ->execute();
+//    entity_delete_multiple('node', $result);
 
     // Get previously imported nodes.
     $query = \Drupal::database()->select('pokemon_migrate', 'pm');

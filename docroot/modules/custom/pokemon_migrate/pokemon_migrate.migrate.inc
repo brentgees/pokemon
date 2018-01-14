@@ -173,7 +173,7 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
           $node->id(),
           'node',
           'card',
-          $node->getId(),
+          $card->getId(),
           time(),
         ])
         ->execute();
