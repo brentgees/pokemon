@@ -1,0 +1,22 @@
+uuid: d778c269-376b-446d-8a6a-752886314d7d
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - thunder_amp
+_core:
+  default_config_hash: NMYfh7M4ijRWzK92380GZgm-N9Xkbu-LJ61-7haqcTo
+id: thunder_amp_messages
+theme: thunder_amp
+region: header
+weight: 0
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  provider: system
+  label_display: '0'
+visibility: {  }

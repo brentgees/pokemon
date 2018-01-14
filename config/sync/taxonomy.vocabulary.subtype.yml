@@ -1,0 +1,9 @@
+uuid: ee96c408-abca-4139-a3d4-6c6ab1589d43
+langcode: en
+status: true
+dependencies: {  }
+name: Subtype
+vid: subtype
+description: ''
+hierarchy: 0
+weight: 0

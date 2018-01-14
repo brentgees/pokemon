@@ -1,0 +1,20 @@
+uuid: 4dda7f48-4282-4e23-9e86-51f4fd1874c3
+langcode: en
+status: true
+dependencies:
+  theme:
+    - amptheme
+_core:
+  default_config_hash: WiYwkKEpgBru-njo1rAKq0wNbyR7IESs2O48HJnZlq0
+id: amptheme_page_title
+theme: amptheme
+region: content
+weight: -50
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  provider: core
+  label_display: '0'
+visibility: {  }

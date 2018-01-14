@@ -1,0 +1,29 @@
+uuid: a3218f44-3c03-45ae-835e-0e877f0543ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_subtype
+    - node.type.card
+    - taxonomy.vocabulary.subtype
+id: node.card.field_card_subtype
+field_name: field_card_subtype
+entity_type: node
+bundle: card
+label: Subtype
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      subtype: subtype
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

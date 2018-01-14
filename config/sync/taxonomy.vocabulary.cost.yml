@@ -1,0 +1,9 @@
+uuid: 78bb5200-30ed-4bae-9b80-1270e9a0c342
+langcode: en
+status: true
+dependencies: {  }
+name: Cost
+vid: cost
+description: ''
+hierarchy: 0
+weight: 0

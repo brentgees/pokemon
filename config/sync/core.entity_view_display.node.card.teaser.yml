@@ -1,0 +1,20 @@
+uuid: 483733db-93dd-440e-ac48-40ff227290ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.card
+  module:
+    - user
+id: node.card.teaser
+targetEntityType: node
+bundle: card
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  shariff_field: true

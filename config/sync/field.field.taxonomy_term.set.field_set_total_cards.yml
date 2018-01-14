@@ -1,0 +1,23 @@
+uuid: 5d799abd-edc7-426c-932b-ef695204f68d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_set_total_cards
+    - taxonomy.vocabulary.set
+id: taxonomy_term.set.field_set_total_cards
+field_name: field_set_total_cards
+entity_type: taxonomy_term
+bundle: set
+label: 'total Cards'
+description: 'The number of cards in the set (excluding secret rares)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

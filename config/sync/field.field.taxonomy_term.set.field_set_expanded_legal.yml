@@ -1,0 +1,23 @@
+uuid: 4703d7b4-6ab3-449e-a86b-730aa85e07e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_set_expanded_legal
+    - taxonomy.vocabulary.set
+id: taxonomy_term.set.field_set_expanded_legal
+field_name: field_set_expanded_legal
+entity_type: taxonomy_term
+bundle: set
+label: 'Expanded legal'
+description: 'Whether or not the set is tournament legal for expanded format'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

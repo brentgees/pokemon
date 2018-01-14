@@ -1,0 +1,26 @@
+uuid: 92b3be0c-b8ad-4ced-a7e6-7672af13e134
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - thunder_amp
+_core:
+  default_config_hash: 0ZU9lzrNxZ-EwxqR4HNTRmIgDwNmO3mFSntA0IjlCHE
+id: thunder_amp_account_menu
+theme: thunder_amp
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

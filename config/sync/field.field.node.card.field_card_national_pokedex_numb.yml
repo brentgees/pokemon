@@ -1,0 +1,23 @@
+uuid: bc98e265-73ff-431a-9728-c3bf0ff54811
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_national_pokedex_numb
+    - node.type.card
+id: node.card.field_card_national_pokedex_numb
+field_name: field_card_national_pokedex_numb
+entity_type: node
+bundle: card
+label: nationalPokedexNumber
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

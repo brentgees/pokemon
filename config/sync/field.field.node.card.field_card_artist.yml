@@ -1,0 +1,29 @@
+uuid: ef9495aa-09d7-45e7-8862-3d2a08d48ec9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_artist
+    - node.type.card
+    - taxonomy.vocabulary.artist
+id: node.card.field_card_artist
+field_name: field_card_artist
+entity_type: node
+bundle: card
+label: Artist
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      artist: artist
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

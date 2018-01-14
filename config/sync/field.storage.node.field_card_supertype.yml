@@ -1,0 +1,20 @@
+uuid: b31872c4-30bc-4332-b1c0-3289c9652e0b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_card_supertype
+field_name: field_card_supertype
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

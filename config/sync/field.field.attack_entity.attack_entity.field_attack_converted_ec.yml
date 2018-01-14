@@ -1,0 +1,24 @@
+uuid: d26d5e16-dbf4-456f-9706-c009b8027b5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.attack_entity.field_attack_converted_ec
+  module:
+    - pokemon_general
+id: attack_entity.attack_entity.field_attack_converted_ec
+field_name: field_attack_converted_ec
+entity_type: attack_entity
+bundle: attack_entity
+label: 'Converted energy cost'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

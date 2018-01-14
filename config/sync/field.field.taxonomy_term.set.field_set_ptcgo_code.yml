@@ -1,0 +1,19 @@
+uuid: e5b401b9-62aa-4cbd-840c-b54ec765d146
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_set_ptcgo_code
+    - taxonomy.vocabulary.set
+id: taxonomy_term.set.field_set_ptcgo_code
+field_name: field_set_ptcgo_code
+entity_type: taxonomy_term
+bundle: set
+label: ptcgoCode
+description: '    The Pokémon Trading Card Game Online Code'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

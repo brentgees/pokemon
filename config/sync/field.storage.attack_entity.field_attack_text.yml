@@ -1,0 +1,19 @@
+uuid: 4ab4e646-6add-4242-9211-f110e9097df0
+langcode: en
+status: true
+dependencies:
+  module:
+    - pokemon_general
+id: attack_entity.field_attack_text
+field_name: field_attack_text
+entity_type: attack_entity
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

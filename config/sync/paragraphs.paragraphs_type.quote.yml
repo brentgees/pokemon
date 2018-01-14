@@ -1,0 +1,9 @@
+uuid: ddc2b64b-7ae1-42af-8c81-77aa5d40ecf6
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: daZoj-JENtDwoX9THEJL3VwCC94V7bziw8kLf3veTcA
+id: quote
+label: Quote
+behavior_plugins: {  }

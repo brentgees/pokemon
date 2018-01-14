@@ -1,0 +1,123 @@
+uuid: e3a28c21-d2f1-41a7-8c0f-2255cb8a6feb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.set.field_set_code
+    - field.field.taxonomy_term.set.field_set_expanded_legal
+    - field.field.taxonomy_term.set.field_set_logo
+    - field.field.taxonomy_term.set.field_set_ptcgo_code
+    - field.field.taxonomy_term.set.field_set_release_date
+    - field.field.taxonomy_term.set.field_set_series
+    - field.field.taxonomy_term.set.field_set_standard_legal
+    - field.field.taxonomy_term.set.field_set_symbol
+    - field.field.taxonomy_term.set.field_set_total_cards
+    - image.style.thumbnail
+    - taxonomy.vocabulary.set
+  module:
+    - datetime
+    - image
+    - path
+id: taxonomy_term.set.default
+targetEntityType: taxonomy_term
+bundle: set
+mode: default
+content:
+  field_set_code:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_set_expanded_legal:
+    weight: 9
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_set_logo:
+    weight: 12
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_set_ptcgo_code:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_set_release_date:
+    weight: 10
+    settings: {  }
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_set_series:
+    weight: 6
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+  field_set_standard_legal:
+    weight: 8
+    settings:
+      display_label: true
+    third_party_settings: {  }
+    type: boolean_checkbox
+    region: content
+  field_set_symbol:
+    weight: 11
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+    type: image_image
+    region: content
+  field_set_total_cards:
+    weight: 7
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 3
+    region: content
+    third_party_settings: {  }
+hidden:
+  description: true

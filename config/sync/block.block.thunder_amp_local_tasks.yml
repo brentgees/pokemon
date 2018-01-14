@@ -1,0 +1,22 @@
+uuid: e8533550-de3d-4138-81e6-14a787228ed6
+langcode: en
+status: false
+dependencies:
+  theme:
+    - thunder_amp
+_core:
+  default_config_hash: M6NKopDWSrk-aLt_-B6fmfIWAJIjOMUkUh95zYLqtmU
+id: thunder_amp_local_tasks
+theme: thunder_amp
+region: content
+weight: -40
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  provider: core
+  label_display: '0'
+  primary: true
+  secondary: true
+visibility: {  }

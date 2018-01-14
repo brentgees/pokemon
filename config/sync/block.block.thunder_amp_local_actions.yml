@@ -1,0 +1,20 @@
+uuid: 1217144f-4e14-4753-b44c-a9487ce9c54e
+langcode: en
+status: false
+dependencies:
+  theme:
+    - thunder_amp
+_core:
+  default_config_hash: mB_JcXYKxy9n1XCjKGMr9kWv0I5bACXfFjKnQdb1FEg
+id: thunder_amp_local_actions
+theme: thunder_amp
+region: content
+weight: -20
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  provider: core
+  label_display: '0'
+visibility: {  }

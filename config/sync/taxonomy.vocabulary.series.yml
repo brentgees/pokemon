@@ -1,0 +1,9 @@
+uuid: 98e01871-45d2-47fa-9401-aca25792c870
+langcode: en
+status: true
+dependencies: {  }
+name: Series
+vid: series
+description: 'A pokemon series (contains one or more sets)'
+hierarchy: 0
+weight: 0

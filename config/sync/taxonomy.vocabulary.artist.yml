@@ -1,0 +1,9 @@
+uuid: 51064821-09f7-41a1-8166-ee7dd379a016
+langcode: en
+status: true
+dependencies: {  }
+name: Artist
+vid: artist
+description: ''
+hierarchy: 0
+weight: 0

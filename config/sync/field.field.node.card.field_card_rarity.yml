@@ -1,0 +1,29 @@
+uuid: 9bfa6fc3-d6ad-4a5b-a2e0-f488104d269e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_rarity
+    - node.type.card
+    - taxonomy.vocabulary.rarity
+id: node.card.field_card_rarity
+field_name: field_card_rarity
+entity_type: node
+bundle: card
+label: Rarity
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      rarity: rarity
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

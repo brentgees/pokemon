@@ -1,0 +1,20 @@
+uuid: e35a68a4-5f83-462d-afd4-8b9eb5cb5c1f
+langcode: en
+status: true
+dependencies:
+  module:
+    - pokemon_general
+id: attack_entity.field_attack_converted_ec
+field_name: field_attack_converted_ec
+entity_type: attack_entity
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,9 @@
+uuid: c5b9e65f-2bb8-4eab-8520-541f4498ba58
+langcode: en
+status: true
+dependencies: {  }
+name: Rarity
+vid: rarity
+description: ''
+hierarchy: 0
+weight: 0

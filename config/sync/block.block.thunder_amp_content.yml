@@ -1,0 +1,22 @@
+uuid: c062b910-dc10-4010-b786-de6b3ab52ede
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - thunder_amp
+_core:
+  default_config_hash: PEqEz1k7tHRCJ_mtDJq1WRTmzZA0hF_JELDRF9H7fNU
+id: thunder_amp_content
+theme: thunder_amp
+region: content
+weight: 0
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  provider: system
+  label_display: '0'
+visibility: {  }

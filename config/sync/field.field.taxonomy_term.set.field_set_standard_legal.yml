@@ -1,0 +1,23 @@
+uuid: 9fec638c-c26b-45ef-94e2-956e113107e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_set_standard_legal
+    - taxonomy.vocabulary.set
+id: taxonomy_term.set.field_set_standard_legal
+field_name: field_set_standard_legal
+entity_type: taxonomy_term
+bundle: set
+label: 'Standard Legal'
+description: '    Whether or not the set is tournament legal for standard format'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

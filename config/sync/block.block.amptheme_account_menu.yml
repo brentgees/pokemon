@@ -1,0 +1,26 @@
+uuid: 3ae9a36f-dc5a-4f0f-a664-35878823bb72
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - amptheme
+_core:
+  default_config_hash: 0ZU9lzrNxZ-EwxqR4HNTRmIgDwNmO3mFSntA0IjlCHE
+id: amptheme_account_menu
+theme: amptheme
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User account menu'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

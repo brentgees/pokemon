@@ -1,0 +1,21 @@
+uuid: 73b8fbc0-8695-4f57-a5b2-1c238dd95068
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_author
+    - media_entity.bundle.twitter
+_core:
+  default_config_hash: HJ4lv74g9LNBuPXiLwWTyJTJK9thvTUN_WmZU-Vzt9E
+id: media.twitter.field_author
+field_name: field_author
+entity_type: media
+bundle: twitter
+label: Author
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

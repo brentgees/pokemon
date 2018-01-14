@@ -1,0 +1,19 @@
+uuid: 3cdf4b7d-5505-47e5-bd50-1579f46c7023
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_set_series
+field_name: field_set_series
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

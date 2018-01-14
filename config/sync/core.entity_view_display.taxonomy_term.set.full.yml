@@ -1,0 +1,114 @@
+uuid: a2e8a195-3743-42c8-a322-308b8000f177
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.full
+    - field.field.taxonomy_term.set.field_set_code
+    - field.field.taxonomy_term.set.field_set_expanded_legal
+    - field.field.taxonomy_term.set.field_set_logo
+    - field.field.taxonomy_term.set.field_set_ptcgo_code
+    - field.field.taxonomy_term.set.field_set_release_date
+    - field.field.taxonomy_term.set.field_set_series
+    - field.field.taxonomy_term.set.field_set_standard_legal
+    - field.field.taxonomy_term.set.field_set_symbol
+    - field.field.taxonomy_term.set.field_set_total_cards
+    - taxonomy.vocabulary.set
+  module:
+    - datetime
+    - image
+    - text
+id: taxonomy_term.set.full
+targetEntityType: taxonomy_term
+bundle: set
+mode: full
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_set_code:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_set_expanded_legal:
+    weight: 7
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_set_logo:
+    weight: 10
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_set_ptcgo_code:
+    weight: 2
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_set_release_date:
+    weight: 8
+    label: above
+    settings:
+      format_type: medium
+      timezone_override: ''
+    third_party_settings: {  }
+    type: datetime_default
+    region: content
+  field_set_series:
+    weight: 4
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_set_standard_legal:
+    weight: 6
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_set_symbol:
+    weight: 9
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_set_total_cards:
+    weight: 5
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden:
+  langcode: true

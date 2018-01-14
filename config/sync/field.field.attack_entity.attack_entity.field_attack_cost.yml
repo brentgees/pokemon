@@ -1,0 +1,30 @@
+uuid: e72da4ea-f693-4b6d-a63e-566c6609167d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.attack_entity.field_attack_cost
+    - taxonomy.vocabulary.cost
+  module:
+    - pokemon_general
+id: attack_entity.attack_entity.field_attack_cost
+field_name: field_attack_cost
+entity_type: attack_entity
+bundle: attack_entity
+label: Cost
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      cost: cost
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

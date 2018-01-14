@@ -1,0 +1,19 @@
+uuid: 1599ed7b-737e-4550-88d0-313f695787eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_hp
+    - node.type.card
+id: node.card.field_card_hp
+field_name: field_card_hp
+entity_type: node
+bundle: card
+label: HP
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

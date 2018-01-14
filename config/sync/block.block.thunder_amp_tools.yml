@@ -1,0 +1,26 @@
+uuid: 871a18ca-7a12-4e50-9dc3-817fd2971517
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.tools
+  module:
+    - system
+  theme:
+    - thunder_amp
+_core:
+  default_config_hash: gVzqfjuuELh2BLZEDT6eVETuOOROe6n72hi3mnVSBRI
+id: thunder_amp_tools
+theme: thunder_amp
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:tools'
+settings:
+  id: 'system_menu_block:tools'
+  label: Tools
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility: {  }

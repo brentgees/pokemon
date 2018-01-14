@@ -1,0 +1,19 @@
+uuid: 40f1dd36-348a-4d2c-8d5c-ac808f10e972
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_set_code
+    - taxonomy.vocabulary.set
+id: taxonomy_term.set.field_set_code
+field_name: field_set_code
+entity_type: taxonomy_term
+bundle: set
+label: code
+description: 'Code used by pokemontcg.io'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

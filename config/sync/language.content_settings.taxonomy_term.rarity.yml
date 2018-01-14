@@ -1,0 +1,11 @@
+uuid: 5bdb528a-45eb-40e6-a511-a3aebe7fe9a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.rarity
+id: taxonomy_term.rarity
+target_entity_type_id: taxonomy_term
+target_bundle: rarity
+default_langcode: site_default
+language_alterable: false

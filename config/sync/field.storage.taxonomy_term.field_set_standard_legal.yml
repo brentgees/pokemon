@@ -1,0 +1,18 @@
+uuid: 5c54ce3f-cf5b-4926-bc56-2cd7b5e68a35
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_set_standard_legal
+field_name: field_set_standard_legal
+entity_type: taxonomy_term
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,9 @@
+uuid: 1fa4bb8d-9ac9-4054-a6b1-e1bd29eece20
+langcode: en
+status: true
+dependencies: {  }
+name: Types
+vid: types
+description: ''
+hierarchy: 0
+weight: 0

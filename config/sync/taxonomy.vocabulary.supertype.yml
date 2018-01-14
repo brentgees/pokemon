@@ -1,0 +1,9 @@
+uuid: d60ebb14-6a4e-4c26-a3a7-3897609ac368
+langcode: en
+status: true
+dependencies: {  }
+name: Supertype
+vid: supertype
+description: ''
+hierarchy: 0
+weight: 0

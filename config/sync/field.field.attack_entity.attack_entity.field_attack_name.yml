@@ -1,0 +1,20 @@
+uuid: a8bfebd6-82c5-4423-a620-0518891fa062
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.attack_entity.field_attack_name
+  module:
+    - pokemon_general
+id: attack_entity.attack_entity.field_attack_name
+field_name: field_attack_name
+entity_type: attack_entity
+bundle: attack_entity
+label: Name
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

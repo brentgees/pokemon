@@ -1,0 +1,19 @@
+uuid: e5ea12d6-4bec-463f-a258-d76682d50ec5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_card_retreat_cost
+    - node.type.card
+id: node.card.field_card_retreat_cost
+field_name: field_card_retreat_cost
+entity_type: node
+bundle: card
+label: 'Retreat Cost'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,26 @@
+uuid: 9eae6900-dc4b-45f7-bce5-934a2e0b3bdc
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - thunder_amp
+_core:
+  default_config_hash: KTq-YMoHZohfQaTto3A_LtSlhTtP7qC3BctmhF21s0I
+id: thunder_amp_main_menu
+theme: thunder_amp
+region: header
+weight: 0
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  provider: system
+  label_display: '0'
+  level: 1
+  depth: 1
+visibility: {  }

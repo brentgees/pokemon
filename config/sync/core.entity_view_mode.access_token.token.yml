@@ -1,0 +1,10 @@
+uuid: f85aaa06-edb7-424b-a3c2-25bafca5a428
+langcode: en
+status: true
+dependencies:
+  module:
+    - access_unpublished
+id: access_token.token
+label: Token
+targetEntityType: access_token
+cache: true

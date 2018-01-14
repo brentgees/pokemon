@@ -1,0 +1,11 @@
+uuid: 72b653fb-3b1c-496e-b3ca-6a70f94d88a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.card
+id: node.card
+target_entity_type_id: node
+target_bundle: card
+default_langcode: site_default
+language_alterable: false
