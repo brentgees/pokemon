@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\pokemon_general\Entity\AttackEntity;
+use Pokemon\Models\Attack;
 
 /**
  * Implements hook_help().
@@ -21,4 +23,42 @@ function pokemon_general_help($route_name, RouteMatchInterface $route_match) {
 
     default:
   }
+}
+
+/**
+ * Checks if the attack already exists.
+ *
+ * @param \Pokemon\Models\Attack $attack
+ *   The attack entity.
+ *
+ * @return int
+ *   Returns the id of the attack or -1.
+ */
+function pokemon_general_check_if_attack_exists(Attack $attack) {
+
+  $query = \Drupal::database()->select('attack_entity__field_attack_name', 'atn');
+  $query->fields('atn', ['entity_id']);
+  $query->condition('bundle', 'attack_entity');
+  $query->condition('field_attack_name_value', $attack->getName());
+
+  $result = $query->execute()->fetchCol();
+
+  // First check the name.
+  if (!empty($result)) {
+    $attacks = AttackEntity::loadMultiple($result);
+    foreach ($attacks as $attack_node) {
+      $attack_text_same = $attack->getText() == $attack_node->get('field_attack_text')->getValue() ? TRUE : FALSE;
+      $attack_damage_same = $attack->getDamage() == $attack_node->get('field_attack_damage')->getValue() ? TRUE : FALSE;
+      $attack_converted_ec_same = $attack->getConvertedEnergyCost() == $attack_node->get('field_attack_converted_ec')->getValue() ? TRUE : FALSE;
+      // We assume the cost is the same for now.
+      // $attack_cost_same = TRUE;
+      // foreach ($attack_node->get('field_attack_cost')->getValue() as $attack_cost) {
+      // $tmp = '';
+      // }
+      if ($attack_text_same && $attack_damage_same && $attack_converted_ec_same) {
+        return $attack_node->id();
+      }
+    }
+  }
+  return -1;
 }

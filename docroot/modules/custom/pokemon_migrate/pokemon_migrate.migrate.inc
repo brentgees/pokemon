@@ -7,6 +7,7 @@
 
 use Drupal\file\Entity\File;
 use Drupal\node\Entity\Node;
+use Drupal\pokemon_general\Entity\AttackEntity;
 use Drupal\taxonomy\Entity\Term;
 use Pokemon\Pokemon;
 
@@ -125,6 +126,29 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
       foreach ($card->getTypes() as $type) {
         $field_card_types[]['target_id'] = pokemon_migrate_create_or_select_term($type, 'types');
       }
+
+      // Attacks.
+      $field_card_attacks = [];
+      foreach ($card->getAttacks() as $attack) {
+        // TODO: check if same attack already exists.
+        $attack_id = pokemon_general_check_if_attack_exists($attack);
+        if ($attack_id == -1) {
+          $field_attack_cost = [];
+          foreach ($attack->getCost() as $cost) {
+            $field_attack_cost[]['target_id'] = pokemon_migrate_create_or_select_term($cost, 'cost');
+          }
+          $attack_entity = AttackEntity::create([
+            'field_attack_name' => $attack->getName(),
+            'field_attack_damage' => $attack->getDamage(),
+            'field_attack_converted_ec' => $attack->getConvertedEnergyCost(),
+            'field_attack_text' => $attack->getText(),
+            'field_attack_cost' => $field_attack_cost,
+          ]);
+          $attack_entity->save();
+          $attack_id = $attack_entity->id();
+        }
+        $field_card_attacks[]['target_id'] = $attack_id;
+      }
       $node = Node::create([
         'type' => 'card',
         'title' => $card->getName(),
@@ -157,6 +181,7 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
           'target_id' => pokemon_migrate_create_or_select_term($card->getSupertype(), 'supertype'),
         ],
         'field_card_types' => $field_card_types,
+        'field_card_attack' => $field_card_attacks,
       ]);
 
       $node->save();
