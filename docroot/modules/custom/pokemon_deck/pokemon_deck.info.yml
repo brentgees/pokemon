@@ -1,0 +1,5 @@
+name: Pokemon Deck
+type: module
+description: Everything related to the decks
+core: 8.x
+package: Custom

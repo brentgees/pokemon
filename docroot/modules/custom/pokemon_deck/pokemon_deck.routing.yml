@@ -1,0 +1,11 @@
+
+pokemon_deck.deck_ptcgo_submit:
+  path: '/decks/new'
+  defaults:
+    _form: '\Drupal\pokemon_deck\Form\DeckPtcgoSubmit'
+    _title: 'DeckPtcgoSubmit'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
