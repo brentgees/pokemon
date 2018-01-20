@@ -1,0 +1,20 @@
+uuid: 73abc93d-c3b8-4a36-9a96-70401ae17c84
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.decklist
+  module:
+    - user
+id: node.decklist.teaser
+targetEntityType: node
+bundle: decklist
+mode: teaser
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  shariff_field: true

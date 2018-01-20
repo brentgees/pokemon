@@ -1,0 +1,22 @@
+uuid: 631d3ca6-6779-48fe-ac1e-93693b1ded54
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: cards
+label: Cards
+type: 'canonical_entities:node'
+pattern: 'cards/[node:field_card_set:entity:name]/[node:title]'
+selection_criteria:
+  d4d201fc-0323-4931-9c56-ad7c9a64e947:
+    id: node_type
+    bundles:
+      card: card
+    negate: false
+    context_mapping:
+      node: node
+    uuid: d4d201fc-0323-4931-9c56-ad7c9a64e947
+selection_logic: and
+weight: -5
+relationships: {  }

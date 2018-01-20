@@ -23,10 +23,7 @@ class PokemonDeckEntryTextWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public static function defaultSettings() {
-    return [
-      'size' => 60,
-      'placeholder' => '',
-    ] + parent::defaultSettings();
+    return parent::defaultSettings();
   }
 
   /**
@@ -34,20 +31,6 @@ class PokemonDeckEntryTextWidget extends WidgetBase {
    */
   public function settingsForm(array $form, FormStateInterface $form_state) {
     $elements = [];
-
-    $elements['size'] = [
-      '#type' => 'number',
-      '#title' => t('Size of textfield'),
-      '#default_value' => $this->getSetting('size'),
-      '#required' => TRUE,
-      '#min' => 1,
-    ];
-    $elements['placeholder'] = [
-      '#type' => 'textfield',
-      '#title' => t('Placeholder'),
-      '#default_value' => $this->getSetting('placeholder'),
-      '#description' => t('Text that will be shown inside the field until a value is entered. This hint is usually a sample value or a brief description of the expected format.'),
-    ];
 
     return $elements;
   }
@@ -58,11 +41,6 @@ class PokemonDeckEntryTextWidget extends WidgetBase {
   public function settingsSummary() {
     $summary = [];
 
-    $summary[] = t('Textfield size: @size', ['@size' => $this->getSetting('size')]);
-    if (!empty($this->getSetting('placeholder'))) {
-      $summary[] = t('Placeholder: @placeholder', ['@placeholder' => $this->getSetting('placeholder')]);
-    }
-
     return $summary;
   }
 
@@ -70,13 +48,39 @@ class PokemonDeckEntryTextWidget extends WidgetBase {
    * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $element['value'] = $element + [
+
+    $element['amount'] = [
       '#type' => 'textfield',
-      '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
-      '#size' => $this->getSetting('size'),
-      '#placeholder' => $this->getSetting('placeholder'),
-      '#maxlength' => $this->getFieldSetting('max_length'),
+      '#default_value' => isset($items[$delta]->amount) ? $items[$delta]->amount : 0,
+      '#size' => '3',
+      '#maxlength' => '2',
     ];
+
+    $element['nid'] = [
+      '#type' => 'textfield',
+      '#default_value' => isset($items[$delta]->amount) ? $items[$delta]->amount : 0,
+      '#size' => '8',
+      '#maxlength' => '8',
+    ];
+
+    $element['hash_identical'] = [
+      '#type' => 'textfield',
+      '#default_value' => isset($items[$delta]->amount) ? $items[$delta]->amount : '',
+      '#size' => '32',
+      '#maxlength' => '32',
+    ];
+
+//    $element['value'] = $element + [
+//      '#type' => 'textfield',
+//      '#default_value' => isset($items[$delta]->value) ? $items[$delta]->value : NULL,
+//      '#size' => $this->getSetting('size'),
+//      '#placeholder' => $this->getSetting('placeholder'),
+//      '#maxlength' => $this->getFieldSetting('max_length'),
+//    ];
+
+//    amount
+//nid
+//hash_identical
 
     return $element;
   }

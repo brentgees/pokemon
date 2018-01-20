@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.card.field_card_artist
     - field.field.node.card.field_card_attack
+    - field.field.node.card.field_card_hash_identical
     - field.field.node.card.field_card_hp
     - field.field.node.card.field_card_id
     - field.field.node.card.field_card_image
@@ -52,6 +53,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
     type: entity_reference_autocomplete
+    region: content
+  field_card_hash_identical:
+    weight: 136
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
     region: content
   field_card_hp:
     weight: 127

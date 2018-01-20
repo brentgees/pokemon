@@ -1,0 +1,21 @@
+uuid: c842571d-58ba-484f-88e1-24238feeb70e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_card_hash_identical
+field_name: field_card_hash_identical
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

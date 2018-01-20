@@ -1,0 +1,19 @@
+uuid: 767f15bf-0b0c-4863-8be8-79c879b62d43
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - pokemon_general
+id: node.field_decklist_deck_entry
+field_name: field_decklist_deck_entry
+entity_type: node
+type: pokemon_deck_entry
+settings: {  }
+module: pokemon_general
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

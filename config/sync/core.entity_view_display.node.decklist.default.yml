@@ -1,0 +1,28 @@
+uuid: b1dbed92-1d2e-4c9c-990c-50478f066b9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.decklist.field_decklist_deck_entry
+    - node.type.decklist
+  module:
+    - pokemon_general
+    - user
+id: node.decklist.default
+targetEntityType: node
+bundle: decklist
+mode: default
+content:
+  field_decklist_deck_entry:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: pokemon_deck_entry_text_formatter
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true
+  shariff_field: true

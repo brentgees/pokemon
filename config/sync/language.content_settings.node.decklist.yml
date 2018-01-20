@@ -1,0 +1,11 @@
+uuid: 174d4ecc-2c3a-4fce-8e0d-b9eb8e7b7ff2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.decklist
+id: node.decklist
+target_entity_type_id: node
+target_bundle: decklist
+default_langcode: site_default
+language_alterable: false

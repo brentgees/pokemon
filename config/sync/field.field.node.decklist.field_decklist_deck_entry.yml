@@ -1,0 +1,29 @@
+uuid: 889187bb-b447-4bb2-8a90-65cf0ce3a1b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_decklist_deck_entry
+    - node.type.decklist
+  module:
+    - pokemon_general
+id: node.decklist.field_decklist_deck_entry
+field_name: field_decklist_deck_entry
+entity_type: node
+bundle: decklist
+label: 'Deck entry'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    amount: '0'
+    nid: '0'
+    hash_identical: ''
+  -
+    amount: '0'
+    nid: '0'
+    hash_identical: ''
+default_value_callback: ''
+settings: {  }
+field_type: pokemon_deck_entry
