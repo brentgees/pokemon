@@ -18,20 +18,22 @@ use Drupal\taxonomy\Entity\Term;
  * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
  */
 function pokemon_migrate_create_or_select_term($term_name, $vid) {
-  $term = Drupal::entityTypeManager()
-    ->getStorage('taxonomy_term')
-    ->loadByProperties(['name' => $term_name, 'vid' => $vid]);
+  if (!empty($term_name) && !empty($vid)) {
+    $term = Drupal::entityTypeManager()
+      ->getStorage('taxonomy_term')
+      ->loadByProperties(['name' => $term_name, 'vid' => $vid]);
 
-  if (!empty($term)) {
-    reset($term);
-    return key($term);
-  }
-  else {
-    $term = Term::create([
-      'name' => $term_name,
-      'vid' => $vid,
-    ]);
-    $term->save();
-    return $term->id();
+    if (!empty($term)) {
+      reset($term);
+      return key($term);
+    }
+    else {
+      $term = Term::create([
+        'name' => $term_name,
+        'vid' => $vid,
+      ]);
+      $term->save();
+      return $term->id();
+    }
   }
 }

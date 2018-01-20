@@ -13,7 +13,7 @@ function pokemon_migrate_drush_command() {
   $items = array();
 
   $items['migrate-reset'] = [
-    'description' => 'Migrates the sets.',
+    'description' => 'Resets and Migrates everything.',
     'arguments' => [],
     'drupal dependencies' => ['pokemon_migrate'],
     'aliases' => ['migrate:reset'],
@@ -88,4 +88,25 @@ function drush_pokemon_migrate_migrate_reset() {
 
   // Empty database.
   db_truncate('pokemon_migrate')->execute();
+  drush_pokemon_migrate_migrate_sets();
+  drush_pokemon_migrate_migrate_cards_all();
+}
+
+/**
+ * Callback function drush_pokemon_migrate_migrate_cards()
+ */
+function drush_pokemon_migrate_migrate_cards_all() {
+  module_load_include('inc', 'pokemon_migrate', 'pokemon_migrate.migrate');
+  $query = \Drupal::database()->select('pokemon_migrate', 'pm');
+  $query->fields('pm');
+  $query->condition('entity_type', 'node');
+  $query->condition('bundle', 'card');
+  $result = $query->execute()->fetchAllAssoc('ptcgapi_id');
+
+  $sets = Pokemon::Set()->all();
+  $context = [];
+  foreach ($sets as $set) {
+    $cards = Pokemon::Card()->where(['setCode' => $set->getCode(), 'pageSize' => '1000'])->all();
+    pokemon_migrate_cards($cards, $result, $context);
+  }
 }

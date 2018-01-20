@@ -116,8 +116,15 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
       file_prepare_directory($directory, FILE_CREATE_DIRECTORY);
 
       // Image.
-      $image = file_get_contents($card->getImageUrlHiRes());
-      $size = getimagesize($card->getImageUrlHiRes());
+      if (get_http_response_code($card->getImageUrlHiRes()) != "404") {
+        $image = file_get_contents($card->getImageUrlHiRes());
+        $size = getimagesize($card->getImageUrlHiRes());
+      }
+      else {
+        $image = file_get_contents($card->getImageUrl());
+        $size = getimagesize($card->getImageUrl());
+      }
+
       $extension = image_type_to_extension($size[2]);
       $image_file = file_save_data($image, 'public://cards/' . $card->getSetCode() . '/' . $card->getNumber() . $extension, FILE_EXISTS_REPLACE);
 
@@ -155,14 +162,19 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
       $card_set = Term::load($card_set_id);
       $card_set_value = $card_set->get('field_set_ptcgo_code')->getValue();
 
+      // Put them in vars first for later use.
+      $field_card_name = $card->getName();
+      $field_card_hp = $card->getHp();
+      $field_card_retreat_cost = $card->getRetreatCost();
+
       $node = Node::create([
         'type' => 'card',
-        'title' => $card->getName() . ' ' . $card_set_value[0]['value'] . ' ' . $card->getNumber(),
-        'field_card_name' => $card->getName(),
+        'title' => $field_card_name . ' ' . $card_set_value[0]['value'] . ' ' . $card->getNumber(),
+        'field_card_name' => $field_card_name,
         'field_card_artist' => [
           'target_id' => pokemon_migrate_create_or_select_term($card->getArtist(), 'artist'),
         ],
-        'field_card_hp' => $card->getHp(),
+        'field_card_hp' => $field_card_hp,
         'field_card_id' => $card->getId(),
         'field_card_image' => [
           'target_id' => $image_file->id(),
@@ -174,7 +186,7 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
         'field_card_rarity' => [
           'target_id' => pokemon_migrate_create_or_select_term($card->getRarity(), 'rarity'),
         ],
-        'field_card_retreat_cost' => $card->getRetreatCost(),
+        'field_card_retreat_cost' => $field_card_retreat_cost,
         'field_card_series' => [
           'target_id' => pokemon_migrate_create_or_select_term($card->getSeries(), 'series'),
         ],
@@ -190,7 +202,15 @@ function pokemon_migrate_cards($cards = [], $existing_nodes = [], &$context) {
         'field_card_types' => $field_card_types,
         'field_card_attack' => $field_card_attacks,
       ]);
+      // @TODO: add weakness / resistance.
+      $unique_fields_array = [];
+      $unique_fields_array[] = $field_card_name;
+      $unique_fields_array[] = $field_card_hp;
+      $unique_fields_array[] = $field_card_retreat_cost;
+      $unique_fields_array[] = $field_card_types;
+      $unique_fields_array[] = $field_card_attacks;
 
+      $node->set('field_card_hash_identical', md5(serialize($unique_fields_array)));
       $node->save();
 
       \Drupal::database()->insert('pokemon_migrate')
@@ -230,4 +250,9 @@ function pokemon_migrate_finished_callback($success, $results, $operations) {
   }
   drupal_set_message($message);
   //$_SESSION['disc_migrate_batch_results'] = $results;
+}
+
+function get_http_response_code($url) {
+  $headers = get_headers($url);
+  return substr($headers[0], 9, 3);
 }
